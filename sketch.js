@@ -1,34 +1,15 @@
 /***********************************************************************************
-	SimpleStateMachine - TEMPLATE
+	RoomsOfAHouse 
 	by Sophia Ladwiniec
 
+Here is my dream home - I love cats and dogs and great decor :) 
 ------------------------------------------------------------------------------------
-	The way it works — you don't need to know this for the template use
-	* array of images gets loaded at startup
-	* drawFunction is a VARIABLE that points to a function varible name
-	* drawOne(), drawTwo(), etc. are set to be functions.
-	* the the keys 1-5 will change the drawFunction variable
-
-------------------------------------------------------------------------------------
-	Notes:
-	- a more advanced state machine with use array-indexing for each of
-		images the draw functions, but this is just for illustrative purposes
-
-	- even more advanced will be to put the draw functions into an array, would
-		be helpful for randomizing, go to the next function, etc
-
-	- next step after that would be to put interfaces into an array that maps to
-		the functions
-
-
 ***********************************************************************************/
 
 // Array of images
 var images = [];
 // Array of functions
 var functions = []; 
-// // Array of instructions 
-// var instructions = []; 
 // Array of colors 
 var colors = []; 
 
@@ -54,44 +35,10 @@ function preload() {
   images[6] = loadImage('assets/roof.png');
 }
 
-function loadFunctionsArray() {
-  functions[0] = houseFront; 
-  functions[1] = foyer; 
-  functions[2] = dinningRoom; 
-  functions[3] = kitchen; 
-  functions[4] = stairs; 
-  functions[5] = upstairs; 
-  functions[6] = roof; 
-}
-
-// function loadInstructionsArray() {
-//   instructions[0] = "Press 1 for Angry!"; 
-//   instructions[1] = "Press 2 for Calm"; 
-//   instructions[2] = "Press 3 for Happy :)"; 
-//   instructions[3] = "Press 4 for Sad :(";
-//   instructions[4] = "Press 5 for Scared"
-//   instructions[5] = "Press s for a splash of bubbles!"; 
-//   instructions[6] = "Press i for instructions or click on the bubble screen"; 
-// }
-
-
-// function loadColors() {
-//   colors[0] = "#FF0000"; 
-//   colors[1] = "#008000"; 
-//   colors[2] = "#FFFF00"; 
-//   colors[3] = "#0000FF";
-//   colors[4] = "#800080"; 
-//   colors[5] = "#4169e1"; 
-//   colors[6] = "#ae0700"; 
-// }
 
 // Center drawing, drawFunction will be one for default
 function setup() {
   createCanvas(800, 600);
-  // loading all arrays 
-  loadFunctionsArray(); 
-  // loadInstructionsArray(); 
-  // loadColors(); 
 
   midX = width/2;
   startY = 60;
@@ -102,7 +49,7 @@ function setup() {
   textSize(24);
 
   // set to one for startup
-  drawFunction = functions[0];
+  drawFunction = houseFront;
 }
 
 // Very simple, sets the background color and calls your state machine function
@@ -113,9 +60,8 @@ function draw() {
   drawFunction();
 }
 
-//========= TEMPLATE: modify these functions, INSIDE the function blocks only =========
 
-//-- drawOne() will draw the image at index 0 from the array
+//-- houseFront() will draw the front of the house
 houseFront = function() {
    image(images[0],width/2, height/2);
 
@@ -123,7 +69,7 @@ houseFront = function() {
    text("Front of House", width/2, height - gTextOffset);
 }
 
-//-- drawTwo() will draw the image at index 1 from the array
+//-- foyer will draw the foyer
 foyer = function() {
    image(images[1],width/2, height/2);
 
@@ -131,15 +77,15 @@ foyer = function() {
    text("Foyer", width/2, height - gTextOffset);
 }
 
-//-- drawOne() will draw the image at index 2 from the array
-dinningRoom = function() {
+//-- dining room will draw the dining room
+diningRoom = function() {
    image(images[2],width/2, height/2);
 
    fill(255);
    text("Dining Room", width/2, height - gTextOffset);
 }
 
-//-- drawOne() will draw the image at index 3 from the array
+//-- kitchen will draw the kitchen
 kitchen = function() {
    image(images[3],width/2, height/2);
 
@@ -147,7 +93,7 @@ kitchen = function() {
    text("Kitchen", width/2, height - gTextOffset);
 }
 
-//-- drawOne() will draw the image at index 4 from the array
+//-- stairs will draw the stairs
 stairs = function() {
    image(images[4],width/2, height/2);
 
@@ -155,6 +101,7 @@ stairs = function() {
    text("Stairs", width/2, height - gTextOffset);
 }
 
+//-- upstairs will draw the upstairs
 upstairs = function() {
    image(images[5],width/2, height/2);
    fill(255);
@@ -162,6 +109,7 @@ upstairs = function() {
    
 }
 
+//-- roof will draw the roof 
 roof = function() {
    image(images[6],width/2, height/2);
    fill(255);
@@ -170,9 +118,7 @@ roof = function() {
 }
 
 
-//========= TEMPLATE: add or change interface functions, as you like =========
-
-// Change the drawFunction variable based on your interaction
+// keytyped() changes the room based off the specific room they are in and allows only certain keys to be pressed 
 function keyTyped() {
   if (drawFunction === houseFront){
     if(key === 'e'){
@@ -184,14 +130,14 @@ function keyTyped() {
       drawFunction = houseFront; 
     }
     if(key === 'd'){
-      drawFunction = dinningRoom; 
+      drawFunction = diningRoom; 
     }
     if(key === 's'){
       drawFunction = stairs; 
     }
   }
 
-  if (drawFunction === dinningRoom){
+  if (drawFunction === diningRoom){
     if(key === 'f'){
       drawFunction = foyer; 
     }
@@ -205,7 +151,7 @@ function keyTyped() {
       drawFunction = stairs; 
     }
     if(key === 'd'){
-      drawFunction = dinningRoom; 
+      drawFunction = diningRoom; 
     }
   }
 
