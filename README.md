@@ -1,10 +1,10 @@
-## Simple State Machine
+## Room of A House
 #### by Sophia Ladwiniec
 
 
 ### Overview
-This is a template for a simple state machine that goes between five states
+This is my dream home! I coded it on P5.js. Be wary of the keys you can press!
 
 
 ### How it works
-Press 1 for angry, 2 for calm, 3 for happy, 4 for sad, and 5 for scared 
+Look at each page and the red buttons to know which keys you can press on specific pages 
